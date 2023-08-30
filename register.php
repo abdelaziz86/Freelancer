@@ -1,3 +1,46 @@
+<?php
+include 'includes/connect.php';  // Connection to the database
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    try {
+        $first_name = $_POST['first_name'];
+        $last_name = $_POST['last_name'];
+        $email = $_POST['email'];
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $created_at = date('Y-m-d H:i:s');  // Current date and time
+
+        // Check if the email already exists in the database
+        $emailExistsQuery = "SELECT COUNT(*) FROM user WHERE email = :email";
+        $stmtExists = $db->prepare($emailExistsQuery);
+        $stmtExists->bindParam(':email', $email);
+        $stmtExists->execute();
+        $emailCount = $stmtExists->fetchColumn();
+
+        if ($emailCount > 0) {
+            $error = "Email already exists. Please choose a different email.";
+        } else {
+            $query = "INSERT INTO user (first_name, last_name, email, password, created_at) VALUES (:first_name, :last_name, :email, :password, :created_at)";
+            $stmt = $db->prepare($query);
+
+            $stmt->bindParam(':first_name', $first_name);
+            $stmt->bindParam(':last_name', $last_name);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':password', $password);
+            $stmt->bindParam(':created_at', $created_at);
+
+            $stmt->execute();
+            //echo "User registered successfully!";
+        }
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -54,57 +97,65 @@
   <div class="body_content">
     <!-- Our SignUp Area -->
     <section class="our-register">
-      <div class="container">
+    <div class="container">
         <div class="row">
-          <div class="col-lg-6 m-auto wow fadeInUp" data-wow-delay="300ms">
-            <div class="main-title text-center">
-              <h2 class="title">Register</h2>
-              <p class="paragraph">Give your visitor a smooth online experience with a solid UX design</p>
+            <div class="col-lg-6 m-auto wow fadeInUp" data-wow-delay="300ms">
+                <div class="main-title text-center">
+                    <h2 class="title">Register</h2>
+                    <p class="paragraph">Give your visitor a smooth online experience with a solid UX design</p>
+                </div>
             </div>
-          </div>
         </div>
         <div class="row wow fadeInRight" data-wow-delay="300ms">
-          <div class="col-xl-6 mx-auto">
-            <div class="log-reg-form search-modal form-style1 bgc-white p50 p30-sm default-box-shadow1 bdrs12">
-              <div class="mb30">
-                <h4>Let's create your account!</h4>
-                <p class="text mt20">Already have an account? <a href="page-login.html" class="text-thm">Log In!</a></p>
-              </div>
-              <div class="mb25">
-                <label class="form-label fw500 dark-color">First Name</label>
-                <input type="text" class="form-control" placeholder="First name">
-              </div>
-              <div class="mb25">
-                <label class="form-label fw500 dark-color">Last Name</label>
-                <input type="text" class="form-control" placeholder="Last name">
-              </div> 
-              <div class="mb25">
-                <label class="form-label fw500 dark-color">Email</label>
-                <input type="email" class="form-control" placeholder="alitfn58@gmail.com">
-              </div>
-              <div class="mb15">
-                <label class="form-label fw500 dark-color">Password</label>
-                <input type="text" class="form-control" placeholder="*******">
-              </div>
-              <div class="d-grid mb20">
-                <button class="ud-btn btn-thm default-box-shadow2" type="button">Creat Account <i class="fal fa-arrow-right-long"></i></button>
-              </div>
-              <div class="hr_content mb20"><hr><span class="hr_top_text">OR</span></div>
-              <div class="d-md-flex justify-content-between">
-                <button class="ud-btn btn-fb fz14 fw400 mb-2 mb-md-0" type="button"><i class="fab fa-facebook-f pr10"></i> Continue Facebook</button>
-                <button class="ud-btn btn-google fz14 fw400 mb-2 mb-md-0" type="button"><i class="fab fa-google"></i> Continue Google</button>
-                <button class="ud-btn btn-apple fz14 fw400" type="button"><i class="fab fa-apple"></i> Continue Apple</button>
-              </div>
+            <div class="col-xl-6 mx-auto">
+                <div class="log-reg-form search-modal form-style1 bgc-white p50 p30-sm default-box-shadow1 bdrs12">
+                    <div class="mb30">
+                        <h4>Let's create your account!</h4>
+                        <p class="text mt20">Already have an account? <a href="login.php" class="text-thm">Log In!</a></p>
+                        
+                        <?php
+
+                          if ($error) {
+                            echo "<div class='alert alert-danger' role='alert'>$error</div>";
+                          }
+                        
+                        ?>
+                        
+
+                    </div>
+                    <form method="POST" action=""> <!-- Change the action to your PHP processing script -->
+                        <div class="mb25">
+                            <label class="form-label fw500 dark-color">First Name</label>
+                            <input type="text" class="form-control" name="first_name" placeholder="First name">
+                        </div>
+                        <div class="mb25">
+                            <label class="form-label fw500 dark-color">Last Name</label>
+                            <input type="text" class="form-control" name="last_name" placeholder="Last name">
+                        </div>
+                        <div class="mb25">
+                            <label class="form-label fw500 dark-color">Email</label>
+                            <input type="email" class="form-control" name="email" placeholder="alitfn58@gmail.com">
+                        </div>
+                        <div class="mb15">
+                            <label class="form-label fw500 dark-color">Password</label>
+                            <input type="password" class="form-control" name="password" placeholder="*******">
+                        </div>
+                        <div class="d-grid mb20">
+                            <button class="ud-btn btn-thm default-box-shadow2" type="submit">Create Account <i class="fal fa-arrow-right-long"></i></button>
+                        </div>
+                    </form>
+                    <div class="hr_content mb20"><hr><span class="hr_top_text">OR</span></div>
+                    <div class="d-md-flex justify-content-between">
+                        <button class="ud-btn btn-fb fz14 fw400 mb-2 mb-md-0" type="button"><i class="fab fa-facebook-f pr10"></i> Continue Facebook</button>
+                        <button class="ud-btn btn-google fz14 fw400 mb-2 mb-md-0" type="button"><i class="fab fa-google"></i> Continue Google</button>
+                        <button class="ud-btn btn-apple fz14 fw400" type="button"><i class="fab fa-apple"></i> Continue Apple</button>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
+</section>
 
-
-
-
-      
-    </section>
 
     
     <?php include 'includes/footer.php' ;  ?>
