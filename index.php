@@ -47,156 +47,15 @@
 <div class="wrapper ovh">
   <div class="preloader"></div>
   
-  <!-- Main Header Nav -->
-  <header class="header-nav nav-innerpage-style bg-transparent zi9 position-relative main-menu border-0">
-    <!-- Ace Responsive Menu -->
-    <nav class="posr"> 
-      <div class="container posr menu_bdrt1">
-        <div class="row align-items-center justify-content-between">
-          <div class="col-auto px-0">
-            <div class="d-flex align-items-center justify-content-between">
-              <div class="logos">
-                <a class="header-logo logo2" href="index.html"><img src="images/header-logo2.svg" alt="Header Logo"></a>
-              </div>
-              <!-- Responsive Menu Structure-->
-              <ul id="respMenu" class="ace-responsive-menu" data-menu-style="horizontal">
-                <li class="visible_list"> <a class="list-item" href="#"><span class="title">Home</span></a>
-                  <!-- Level Two-->
-                  <ul>
-                    <li><a href="index.html">Home V1</a></li>
-                    <li><a href="index2.html">Home V2</a></li>
-                    <li><a href="index3.html">Home V3</a></li>
-                    <li><a href="index4.html">Home V4</a></li>
-                    <li><a href="index5.html">Home V5</a></li>
-                    <li><a href="index6.html">Home V6</a></li>
-                    <li><a href="index7.html">Home V7</a></li>
-                    <li><a href="index8.html">Home V8</a></li>
-                    <li><a href="index9.html">Home V9</a></li>
-                    <li><a href="index10.html">Home V10</a></li>
-                  </ul>
-                </li>
-                <li class="visible_list"> <a class="list-item" href="#"><span class="title">Browse Jobs</span></a>
-                  <ul >
-                    <li> <a href="#"><span class="title">Services</span></a>
-                      <ul>
-                        <li><a href="page-service-v1.html">Service v1</a></li>
-                        <li><a href="page-service-v2.html">Service v2</a></li>
-                        <li><a href="page-service-v3.html">Service v3</a></li>
-                        <li><a href="page-service-v4.html">Service v4</a></li>
-                        <li><a href="page-service-v5.html">Service v5</a></li>
-                        <li><a href="page-service-v6.html">Service v6</a></li>
-                        <li><a href="page-service-v7.html">Service v7</a></li>
-                        <li><a href="page-service-all.html">Service All</a></li>
-                        <li><a href="page-service-single.html">Service Single</a></li>
-                      </ul>
-                    </li>
-                    <li> <a href="#"><span class="title">Projects</span></a>
-                      <ul>
-                        <li><a href="page-project-v1.html">Project v1</a></li>
-                        <li><a href="page-project-single.html">Project Single</a></li>
-                      </ul>
-                    </li>
-                    <li> <a href="#"><span class="title">Job View</span></a>
-                      <ul>
-                        <li><a href="page-job-list-v1.html">Job list v1</a></li>
-                        <li><a href="page-job-list-v2.html">Job list v2</a></li>
-                        <li><a href="page-job-list-v3.html">Job list V3</a></li>
-                        <li><a href="page-job-list-single.html">Job Single</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li class="visible_list"> <a class="list-item" href="#"><span class="title">Users</span></a>
-                  <ul>
-                    <li> <a href="#"><span class="title">Dashboard</span></a>
-                      <ul>
-                        <li><a href="page-dashboard.html">Dashboard</a></li>
-                        <li><a href="page-dashboard-proposal.html">Proposal</a></li>
-                        <li><a href="page-dashboard-save.html">Saved</a></li>
-                        <li><a href="page-dashboard-message.html">Message</a></li>
-                        <li><a href="page-dashboard-reviews.html">Reviews</a></li>
-                        <li><a href="page-dashboard-invoice.html">Invoice</a></li>
-                        <li><a href="page-dashboard-payouts.html">Payouts</a></li>
-                        <li><a href="page-dashboard-statement.html">Statement</a></li>
-                        <li><a href="page-dashboard-manage-service.html">Manage Service</a></li>
-                        <li><a href="page-dashboard-add-service.html">Add Services</a></li>
-                        <li><a href="page-dashboard-manage-jobs.html">Manage Jobs</a></li>
-                        <li><a href="page-dashboard-manage-project.html">Manage Project</a></li>
-                        <li><a href="page-dashboard-create-project.html">Create Project</a></li>
-                        <li><a href="page-dashboard-profile.html">My Profile</a></li>
-                      </ul>
-                    </li>
-                    <li> <a href="#"><span class="title">Employee</span></a>
-                      <ul>
-                        <li><a href="page-employee-v1.html">Employee V1</a></li>
-                        <li><a href="page-employee-v2.html">Employee V2</a></li>
-                        <li><a href="page-employee-single.html">Employee Single</a></li>
-                      </ul>
-                    </li>
-                    <li> <a href="#"><span class="title">Freelancer</span></a>
-                      <ul>
-                        <li><a href="page-freelancer-v1.html">Freelancer V1</a></li>
-                        <li><a href="page-freelancer-v2.html">Freelancer V2</a></li>
-                        <li><a href="page-freelancer-v3.html">Freelancer V3</a></li>
-                        <li><a href="page-freelancer-single.html">Freelancer Single</a></li>
-                      </ul>
-                    </li>
-                    <li> <a href="page-become-seller.html"><span class="title">Become Seller</span></a></li>
-                  </ul>
-                </li>
-                <li class="visible_list"> <a class="list-item" href="#"><span class="title">Pages</span></a>
-                  <ul>
-                    <li> <a href="#"><span class="title">About</span></a>
-                      <ul>
-                        <li><a href="page-about.html">About v1</a></li>
-                        <li><a href="page-about-v2.html">About v2</a></li>
-                      </ul>
-                    </li>
-                    <li> <a href="#"><span class="title">Blog</span></a>
-                      <ul>
-                        <li><a href="page-blog-v1.html">List V1</a></li>
-                        <li><a href="page-blog-v2.html">List V2</a></li>
-                        <li><a href="page-blog-v3.html">List V3</a></li>
-                        <li><a href="page-blog-single.html">Single</a></li>
-                      </ul>
-                    </li>
-                    <li> <a href="#"><span class="title">Shop</span></a>
-                      <ul>
-                        <li><a href="page-shop.html">List</a></li>
-                        <li><a href="page-shop-single.html">Single</a></li>
-                        <li><a href="page-shop-cart.html">Cart</a></li>
-                        <li><a href="page-shop-checkout.html">Checkout</a></li>
-                        <li><a href="page-shop-order.html">Order</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="page-contact.html">Contact</a></li>
-                    <li><a href="page-error.html">404</a></li>
-                    <li><a href="page-faq.html">Faq</a></li>
-                    <li><a href="page-help.html">Help</a></li>
-                    <li><a href="page-invoice.html">Invoices</a></li>
-                    <li><a href="page-login.html">Login</a></li>
-                    <li><a href="page-pricing.html">Pricing</a></li>
-                    <li><a href="page-register.html">Register</a></li>
-                    <li><a href="page-terms.html">Terms</a></li>
-                    <li><a href="page-ui-element.html">UI Elements</a></li>
-                  </ul>
-                </li>
-                <li> <a class="list-item" href="page-contact.html">Contact</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-auto px-0">
-            <div class="d-flex align-items-center">
-              <a class="login-info" data-bs-toggle="modal" href="#exampleModalToggle" role="button"><span class="flaticon-loupe"></span></a>
-              <a class="login-info mx10-lg mx30" href="page-become-seller.html"><span class="d-none d-xl-inline-block">Become a</span> Seller</a>
-              <a class="login-info mr10-lg mr30" href="page-login.html">Sign in</a>
-              <a class="ud-btn btn-thm2 add-joining" href="page-register.html">Join</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
-  </header>
+  
+
+
+
+  <?php include 'includes/navbar.php' ;  ?>  
+
+
+
+
   <!-- Search Modal -->
   <div class="search-modal">
     <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
@@ -1671,132 +1530,17 @@
       </div>
     </section>
 
-    <!-- Our Footer --> 
-    <section class="footer-style1 at-home7 pt25 pb-0">
-      <div class="container">
-        <div class="row bdrb1 pb10 mb60">
-          <div class="col-md-7">
-            <div class="d-block text-center text-md-start justify-content-center justify-content-md-start d-md-flex align-items-center mb-3 mb-md-0">
-              <a class="fz17 fw500 mr15-md mr30" href="#">Terms of Service</a>
-              <a class="fz17 fw500 mr15-md mr30" href="#">Privacy Policy</a>
-              <a class="fz17 fw500" href="#">Site Map</a>
-            </div>
-          </div>
-          <div class="col-md-5">
-            <div class="social-widget text-center text-md-end">
-              <div class="social-style1 light-style2">
-                <a class="me-2 fw500 fz17" href="#">Follow us</a>
-                <a href="#"><i class="fab fa-facebook-f list-inline-item"></i></a>
-                <a href="#"><i class="fab fa-twitter list-inline-item"></i></a>
-                <a href="#"><i class="fab fa-instagram list-inline-item"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in list-inline-item"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-6 col-lg-3">
-            <div class="link-style1 light-style at-home8 mb-4 mb-sm-5">
-              <h5 class="mb15">About</h5>
-              <div class="link-list">
-                <a href="#">Careers</a>
-                <a href="#">Press & News</a>
-                <a href="#">Partnerships</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Investor Relations</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-3">
-            <div class="link-style1 light-style at-home8 mb-4 mb-sm-5">
-              <h5 class="mb15">Categories</h5>
-              <ul class="ps-0">
-                <li><a href="#">Graphics & Design</a></li>
-                <li><a href="#">Digital Marketing</a></li>
-                <li><a href="#">Writing & Translation</a></li>
-                <li><a href="#">Video & Animation</a></li>
-                <li><a href="#">Music & Audio</a></li>
-                <li><a href="#">Programming & Tech</a></li>
-                <li><a href="#">Data</a></li>
-                <li><a href="#">Business</a></li>
-                <li><a href="#">Lifestyle</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-3">
-            <div class="link-style1 light-style at-home8 mb-4 mb-sm-5">
-              <h5 class="mb15">Support</h5>
-              <ul class="ps-0">
-                <li><a href="#">Help & Support</a></li>
-                <li><a href="#">Trust & Safety</a></li>
-                <li><a href="#">Selling on Freeio</a></li>
-                <li><a href="#">Buying on Freeio</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-3">
-            <div class="footer-widget">
-              <div class="footer-widget mb-4 mb-sm-5">
-                <div class="mailchimp-widget">
-                  <h5 class="title mb20">Subscribe</h5>
-                  <div class="mailchimp-style1 at-home4">
-                    <input type="email" class="form-control" placeholder="Your email address">
-                    <button type="submit">Send</button>
-                  </div>
-                </div>
-              </div>
-              <div class="app-widget mb-4 mb-sm-5">
-                <h5 class="title mb20">Apps</h5>
-                <div class="row mb-4 mb-lg-5">
-                  <div class="col-lg-12">
-                    <a class="app-list light-style d-flex align-items-center mb10" href="#">
-                      <i class="fab fa-apple fz17 mr15"></i>
-                      <h6 class="app-title fz15 fw400 mb-0">iOS App</h6>
-                    </a>
-                    <a class="app-list light-style d-flex align-items-center" href="#">
-                      <i class="fab fa-google-play fz15 mr15"></i>
-                      <h6 class="app-title fz15 fw400 mb-0">Android App</h6>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="container bdrt1 py-4">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="text-center text-lg-start">
-              <p class="copyright-text mb-2 mb-md0 text-dark-light ff-heading">© Freeio. 2023 CreativeLayers. All rights reserved.</p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="footer_bottom_right_btns at-home8 text-center text-lg-end">
-              <ul class="p-0 m-0">
-                <li class="list-inline-item bg-white">
-                  <select class="selectpicker show-tick">
-                    <option>US$ USD</option>
-                    <option>Euro</option>
-                    <option>Pound</option>
-                  </select>
-                </li>
-                <li class="list-inline-item bg-white">
-                  <select class="selectpicker show-tick">
-                    <option>English</option>
-                    <option>Frenc</option>
-                    <option>Italian</option>
-                    <option>Spanish</option>
-                    <option>Turkey</option>
-                  </select>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    
+
+
+
+    <?php include 'includes/footer.php' ;  ?>
+
+
+
+
+
+
     <a class="scrollToHome" href="#"><i class="fas fa-angle-up"></i></a>
   </div>
 </div>
