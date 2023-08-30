@@ -1,39 +1,48 @@
 <?php
 include 'includes/connect.php';  // Connection to the database
+session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    try {
-        $first_name = $_POST['first_name'];
-        $last_name = $_POST['last_name'];
-        $email = $_POST['email'];
-        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $created_at = date('Y-m-d H:i:s');  // Current date and time
+    if ($_POST['password'] != $_POST['confirm']) {
+        $error = "Passwords do not match. Please try again.";
+    } else {
 
-        // Check if the email already exists in the database
-        $emailExistsQuery = "SELECT COUNT(*) FROM user WHERE email = :email";
-        $stmtExists = $db->prepare($emailExistsQuery);
-        $stmtExists->bindParam(':email', $email);
-        $stmtExists->execute();
-        $emailCount = $stmtExists->fetchColumn();
+      try {
+          $first_name = $_POST['first_name'];
+          $last_name = $_POST['last_name'];
+          $email = $_POST['email'];
+          $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+          $created_at = date('Y-m-d H:i:s');  // Current date and time
 
-        if ($emailCount > 0) {
-            $error = "Email already exists. Please choose a different email.";
-        } else {
-            $query = "INSERT INTO user (first_name, last_name, email, password, created_at) VALUES (:first_name, :last_name, :email, :password, :created_at)";
-            $stmt = $db->prepare($query);
+          // Check if the email already exists in the database
+          $emailExistsQuery = "SELECT COUNT(*) FROM user WHERE email = :email";
+          $stmtExists = $db->prepare($emailExistsQuery);
+          $stmtExists->bindParam(':email', $email);
+          $stmtExists->execute();
+          $emailCount = $stmtExists->fetchColumn();
 
-            $stmt->bindParam(':first_name', $first_name);
-            $stmt->bindParam(':last_name', $last_name);
-            $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':password', $password);
-            $stmt->bindParam(':created_at', $created_at);
+          if ($emailCount > 0) {
+              $error = "Email already exists. Please choose a different email.";
+          } else {
+              $query = "INSERT INTO user (first_name, last_name, email, password, created_at) VALUES (:first_name, :last_name, :email, :password, :created_at)";
+              $stmt = $db->prepare($query);
 
-            $stmt->execute();
-            //echo "User registered successfully!";
-        }
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
-    }
+              $stmt->bindParam(':first_name', $first_name);
+              $stmt->bindParam(':last_name', $last_name);
+              $stmt->bindParam(':email', $email);
+              $stmt->bindParam(':password', $password);
+              $stmt->bindParam(':created_at', $created_at);
+
+              $stmt->execute();
+
+              $_SESSION["success"] = true ; 
+              header("location:login.php") ;
+              //echo "User registered successfully!";
+          }
+      } catch (PDOException $e) {
+          echo "Error: " . $e->getMessage();
+      }
+  }
 }
 ?>
 
@@ -115,7 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         
                         <?php
 
-                          if ($error) {
+                          if (isset($error)) {
                             echo "<div class='alert alert-danger' role='alert'>$error</div>";
                           }
                         
@@ -139,6 +148,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="mb15">
                             <label class="form-label fw500 dark-color">Password</label>
                             <input type="password" class="form-control" name="password" placeholder="*******">
+                        </div>
+                        <div class="mb15">
+                            <label class="form-label fw500 dark-color">Confirm password</label>
+                            <input type="password" class="form-control" name="confirm" placeholder="*******">
                         </div>
                         <div class="d-grid mb20">
                             <button class="ud-btn btn-thm default-box-shadow2" type="submit">Create Account <i class="fal fa-arrow-right-long"></i></button>
