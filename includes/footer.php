@@ -1,5 +1,5 @@
 <!-- Our Footer --> 
-    <section class="footer-style1 at-home7 pt25 pb-0">
+    <section class="footer-style1 at-home5 pt25 pb-0">
       <div class="container">
         <div class="row bdrb1 pb10 mb60">
           <div class="col-md-7">
@@ -67,8 +67,8 @@
               <div class="footer-widget mb-4 mb-sm-5">
                 <div class="mailchimp-widget">
                   <h5 class="title mb20">Subscribe</h5>
-                  <div class="mailchimp-style1 at-home4">
-                    <input type="email" class="form-control" placeholder="Your email address">
+                  <div class="mailchimp-style1 at-home7">
+                    <input type="email" class="form-control bg-white" placeholder="Your email address">
                     <button type="submit">Send</button>
                   </div>
                 </div>
