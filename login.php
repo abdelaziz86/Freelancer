@@ -2,6 +2,9 @@
 include 'includes/connect.php';  // Connection to the database
 session_start();
 
+if (isset($_SESSION['user'])) {
+    header("location:index.php") ; 
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];

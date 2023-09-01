@@ -1,3 +1,8 @@
+<?php 
+session_start() ; 
+
+?>
+
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -49,7 +54,7 @@
   
 
   <?php include 'includes/navbar.php' ;  ?>
-  
+
   <?php include 'includes/navbar_mobile.php' ;  ?>
 
 

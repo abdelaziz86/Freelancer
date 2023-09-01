@@ -2,12 +2,14 @@
 include 'includes/connect.php';  // Connection to the database
 session_start();
 
+if (isset($_SESSION['user'])) {
+    header("location:index.php") ; 
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($_POST['password'] != $_POST['confirm']) {
         $error = "Passwords do not match. Please try again.";
     } else {
-
-      try {
           $first_name = $_POST['first_name'];
           $last_name = $_POST['last_name'];
           $email = $_POST['email'];
@@ -24,24 +26,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           if ($emailCount > 0) {
               $error = "Email already exists. Please choose a different email.";
           } else {
-              $query = "INSERT INTO user (first_name, last_name, email, password, created_at) VALUES (:first_name, :last_name, :email, :password, :created_at)";
-              $stmt = $db->prepare($query);
+              try {
+                  $db->beginTransaction();
 
-              $stmt->bindParam(':first_name', $first_name);
-              $stmt->bindParam(':last_name', $last_name);
-              $stmt->bindParam(':email', $email);
-              $stmt->bindParam(':password', $password);
-              $stmt->bindParam(':created_at', $created_at);
+                  $query = "INSERT INTO user (first_name, last_name, email, password, created_at) VALUES (:first_name, :last_name, :email, :password, :created_at)";
+                  $stmt = $db->prepare($query);
 
-              $stmt->execute();
+                  $stmt->bindParam(':first_name', $first_name);
+                  $stmt->bindParam(':last_name', $last_name);
+                  $stmt->bindParam(':email', $email);
+                  $stmt->bindParam(':password', $password);
+                  $stmt->bindParam(':created_at', $created_at);
 
-              $_SESSION["success"] = true ; 
-              header("location:login.php") ;
-              //echo "User registered successfully!";
-          }
-      } catch (PDOException $e) {
-          echo "Error: " . $e->getMessage();
-      }
+                  $stmt->execute();
+
+                  $user_id = $db->lastInsertId(); // Get the ID of the inserted user
+
+                  // Insert into the "profile" table
+                  $profile_query = "INSERT INTO profile (user_id) VALUES (:user_id)";
+                  $profile_stmt = $db->prepare($profile_query);
+                  $profile_stmt->bindParam(':user_id', $user_id);
+                  $profile_stmt->execute();
+
+                  $db->commit();
+
+                  $_SESSION["success"] = true; 
+                  header("location:login.php");
+              } catch (PDOException $e) {
+                  $db->rollBack();
+                  echo "Error: " . $e->getMessage();
+              }
+          
+        }
+      
   }
 }
 ?>

@@ -599,8 +599,28 @@
             <div class="d-flex align-items-center">
               <a class="login-info" data-bs-toggle="modal" href="#exampleModalToggle" role="button"><span class="flaticon-loupe"></span></a>
               <a class="login-info mx10-lg mx30" href="page-become-seller.html"><span class="d-none d-xl-inline-block">Become a</span> Seller</a>
-              <a class="login-info mr10-lg mr30" href="login.php">Sign in</a>
-              <a class="ud-btn btn-thm2 add-joining" href="register.php">Join</a>
+              
+
+              <?php 
+
+                if (isset($_SESSION['user'])) { 
+              ?>
+                  <a class="login-info mr10-lg mr30" style="font-weight : 800px" href="profile.php">
+                    Welcome back 
+                      <span style="color : green ; ">
+                        <?php echo $_SESSION['user']['first_name'] ;  ?>
+                      </span>
+                      ,
+                  </a>
+
+                  <a class="login-info mr10-lg mr30" href="includes/logout.php" style="color : blue ; ">Logout.</a>
+
+              <?php } else { ?>
+                  <a class="login-info mr10-lg mr30" href="login.php">Sign in</a>
+                  <a class="ud-btn btn-thm2 add-joining" href="register.php">Join</a>
+              <?php } ?>
+              
+              
             </div>
           </div>
         </div> 
