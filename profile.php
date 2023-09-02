@@ -65,6 +65,9 @@ try {
 <link href="images/apple-touch-icon-114x114.png" sizes="114x114" rel="apple-touch-icon">
 <link href="images/apple-touch-icon-180x180.png" sizes="180x180" rel="apple-touch-icon">
 
+
+
+
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -75,6 +78,7 @@ try {
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
 </head>
 <body>
@@ -127,8 +131,9 @@ try {
                     </p>
 
 
-                    <button class="btn btn-primary edit-button" data-toggle="modal" data-target="#editProfileModal">
-                        Edit
+                    <button class="btn btn-primary edit-button" data-toggle="modal" data-target="#editProfileModal" style="color : white">
+                      <i class="fa fa-pencil-square-o" aria-hidden="true"></i> 
+                      Edit
                     </button>
                   </div>
                 </div>
@@ -156,9 +161,10 @@ try {
             <!-- Modal Header -->
             <div class="modal-header">
                 <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" style="color : white ; " class="btn btn-secondary" data-dismiss="modal">
+                  X
+                </button> 
+
             </div>
 
             <!-- Modal Body -->
@@ -186,6 +192,13 @@ try {
                     <div class="form-group">
                         <label for="editTitle">Title</label>
                         <input type="text" class="form-control" id="editTitle" name="editTitle" value="<?php echo $user['job']; ?>">
+                    </div>
+
+                    <!-- Bio -->
+                    <div class="form-group">
+                        <label for="editTitle">Bio</label>
+                        <input type="text" style="height : 100px" class="form-control" id="editBio" name="editBio" value="<?php echo $user['bio']; ?>">
+ 
                     </div>
                 </form>
             </div>
@@ -253,7 +266,7 @@ try {
             <div class="service-about">
               <h4>Description</h4>
               <p class="text mb30">
-                  <?php echo $profile['bio'] ;  ?>
+                  <?php echo $user['bio']; ?>
               </p>
               <!-- <p class="text mb30">Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p> -->
               <hr class="opacity-100 mb60 mt60">
