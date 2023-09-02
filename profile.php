@@ -71,6 +71,10 @@ try {
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+<!-- Add these script tags to your HTML, and make sure they are included before your custom JavaScript code. -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 
 </head>
 <body>
@@ -108,7 +112,7 @@ try {
                     <h5 class="title mb-1">
                       <?php echo $user['first_name']. " ".$user['last_name'] ;  ?>
                     </h5>
-                    
+
                     <p class="mb-0">
                       <?php echo $user['job'] ;  ?>
                     </p>
@@ -121,6 +125,11 @@ try {
                     <p class="mb-0 dark-color fz15 fw500 list-inline-item ml15 mb5-sm ml0-xs"><i class="flaticon-30-days vam fz20 me-2"></i> 
                       Member since <?php echo date('F j, Y', strtotime($user['created_at'])); ?>
                     </p>
+
+
+                    <button class="btn btn-primary edit-button" data-toggle="modal" data-target="#editProfileModal">
+                        Edit
+                    </button>
                   </div>
                 </div>
               </div>
@@ -129,6 +138,68 @@ try {
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- The Modal -->
+    <div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <!-- Place your form fields for editing here -->
+                    <!-- For example: -->
+                    <label for="editFirstName">First Name</label>
+                    <input type="text" id="editFirstName" name="editFirstName" value="<?php echo $user['first_name']; ?>">
+
+                    <br>
+                    <label for="editFirstName">Last Name </label>
+                    <input type="text" id="editFirstName" name="editFirstName" value="<?php echo $user['last_name']; ?>">
+
+                    <br>
+                    <label for="editFirstName">Location </label>
+                    <input type="text" id="editFirstName" name="editFirstName" value="<?php echo $user['location']; ?>">
+
+                    <br>
+                    <label for="editFirstName">Title </label>
+                    <input type="text" id="editFirstName" name="editFirstName" value="<?php echo $user['job']; ?>">
+
+
+                    <!-- ... (other form fields) -->
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
 
     <!-- Service Details -->
     <section class="pt10 pb90 pb30-md">
@@ -522,6 +593,9 @@ try {
 <script src="js/owl.js"></script> 
 <!-- Custom script for all pages --> 
 <script src="js/script.js"></script>
+ 
+
+
 </body>
 
 <!-- Mirrored from creativelayers.net/themes/freeio-html/page-freelancer-single.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Aug 2023 09:14:18 GMT -->
