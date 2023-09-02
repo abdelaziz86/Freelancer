@@ -150,48 +150,54 @@ try {
 
 
     <!-- The Modal -->
-    <div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="editProfileModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+<div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
 
-                <!-- Modal Body -->
-                <div class="modal-body">
-                    <!-- Place your form fields for editing here -->
-                    <!-- For example: -->
-                    <label for="editFirstName">First Name</label>
-                    <input type="text" id="editFirstName" name="editFirstName" value="<?php echo $user['first_name']; ?>">
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form>
+                    <!-- First Name -->
+                    <div class="form-group">
+                        <label for="editFirstName">First Name</label>
+                        <input type="text" class="form-control" id="editFirstName" name="editFirstName" value="<?php echo $user['first_name']; ?>">
+                    </div>
 
-                    <br>
-                    <label for="editFirstName">Last Name </label>
-                    <input type="text" id="editFirstName" name="editFirstName" value="<?php echo $user['last_name']; ?>">
+                    <!-- Last Name -->
+                    <div class="form-group">
+                        <label for="editLastName">Last Name</label>
+                        <input type="text" class="form-control" id="editLastName" name="editLastName" value="<?php echo $user['last_name']; ?>">
+                    </div>
 
-                    <br>
-                    <label for="editFirstName">Location </label>
-                    <input type="text" id="editFirstName" name="editFirstName" value="<?php echo $user['location']; ?>">
+                    <!-- Location -->
+                    <div class="form-group">
+                      <label for="editLocation">Location</label>
+                      <select class="form-control" id="editLocation" name="editLocation"></select>
+                  </div>
 
-                    <br>
-                    <label for="editFirstName">Title </label>
-                    <input type="text" id="editFirstName" name="editFirstName" value="<?php echo $user['job']; ?>">
+                    <!-- Title -->
+                    <div class="form-group">
+                        <label for="editTitle">Title</label>
+                        <input type="text" class="form-control" id="editTitle" name="editTitle" value="<?php echo $user['job']; ?>">
+                    </div>
+                </form>
+            </div>
 
-
-                    <!-- ... (other form fields) -->
-                </div>
-
-                <!-- Modal Footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save Changes</button>
-                </div>
+            <!-- Modal Footer -->
+            <div class="modal-footer" >
+                <button type="button" style="color : white ; " class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" style="color : white ; " class="btn btn-success">Save Changes</button>
             </div>
         </div>
     </div>
+</div>
 
 
 
@@ -580,6 +586,8 @@ try {
   </div>
 </div>
 <!-- Wrapper End --> 
+<script src="includes/myScript.js"></script>
+
 <script src="js/jquery-3.6.4.min.js"></script>
 <script src="js/jquery-migrate-3.0.0.min.js"></script>
 <script src="js/popper.min.js"></script>
