@@ -1,26 +1,25 @@
 <?php 
 session_start() ; 
 include 'includes/connect.php';
-
-$user = $_SESSION['user'] ;
+ 
 $user_id = $_SESSION['user']['id'];
+
+try {
+    $query = "SELECT * FROM user WHERE id = :id";
+    $stmt = $db->prepare($query);
+    $stmt->bindParam(':id', $user_id);
+    $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC); 
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
 
 try {
     $query = "SELECT * FROM profile WHERE user_id = :user_id";
     $stmt = $db->prepare($query);
     $stmt->bindParam(':user_id', $user_id);
     $stmt->execute();
-    $profile = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    // if ($profile) {
-    //     // Now you can use $profile to access profile data
-    //     $profile_id = $profile['profile_id'];
-    //     $profile_data = $profile['profile_data'];
-        
-    //     // ... (other processing or display)
-    // } else {
-    //     echo "Profile not found for the user.";
-    // }
+    $profile = $stmt->fetch(PDO::FETCH_ASSOC); 
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
@@ -170,6 +169,7 @@ try {
             <!-- Modal Body -->
             <div class="modal-body">
                 <form>
+                    <input  type="hidden" id="idUser" value="<?php echo $user['id'] ; ?>">
                     <!-- First Name -->
                     <div class="form-group">
                         <label for="editFirstName">First Name</label>
@@ -194,9 +194,21 @@ try {
                         <input type="text" class="form-control" id="editTitle" name="editTitle" value="<?php echo $user['job']; ?>">
                     </div>
 
+                    <!-- Gender -->
+                    <div class="form-group">
+                        <label for="editGender">Gender</label>
+                        <input type="text" class="form-control" id="editGender" name="ededitGenderitTitle" value="<?php echo $user['gender']; ?>">
+                    </div>
+
+                    <!-- Hourly -->
+                    <div class="form-group">
+                        <label for="editHourlyPay">Hourly Pay</label>
+                        <input type="text" class="form-control" id="editHourlyPay" name="editHourlyPay" value="<?php echo $user['hourly_pay']; ?>">
+                    </div>
+
                     <!-- Bio -->
                     <div class="form-group">
-                        <label for="editTitle">Bio</label>
+                        <label for="editBio">Bio</label>
                         <input type="text" style="height : 100px" class="form-control" id="editBio" name="editBio" value="<?php echo $user['bio']; ?>">
  
                     </div>
@@ -206,7 +218,7 @@ try {
             <!-- Modal Footer -->
             <div class="modal-footer" >
                 <button type="button" style="color : white ; " class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" style="color : white ; " class="btn btn-success">Save Changes</button>
+                <button type="button" style="color : white ; " class="btn btn-success"  id="saveChangesBtn">Save Changes</button>
             </div>
         </div>
     </div>
@@ -548,26 +560,32 @@ try {
           <div class="col-lg-4">
             <div class="blog-sidebar ms-lg-auto">
               <div class="price-widget pt25 widget-mt-minus bdrs8">
-                <h3 class="widget-title">$29 <small class="fz15 fw500">/per hour</small></h3>
+                <h3 class="widget-title"><?php echo $user['hourly_pay'] ;  ?> <small class="fz15 fw500">/per hour</small></h3>
                 <div class="category-list mt20">
                   <a class="d-flex align-items-center justify-content-between bdrb1 pb-2" href="#">
-                    <span class="text"><i class="flaticon-place text-thm2 pe-2 vam"></i>Location</span> <span class="">London, UK</span>
+                    <span class="text"><i class="flaticon-place text-thm2 pe-2 vam"></i>Location</span> <span class="">
+                      <?php echo $user['location'] ;  ?>
+                    </span>
                   </a>
                   <a class="d-flex align-items-center justify-content-between bdrb1 pb-2" href="#">
-                    <span class="text"><i class="flaticon-30-days text-thm2 pe-2 vam"></i>Member since</span> <span class="">April 2022</span>
+                    <span class="text"><i class="flaticon-30-days text-thm2 pe-2 vam"></i>Member since</span> <span class="">
+                      <?php echo date('F j, Y', strtotime($user['created_at'])); ?>
+                    </span>
                   </a>
-                  <a class="d-flex align-items-center justify-content-between bdrb1 pb-2" href="#">
+                  <!-- <a class="d-flex align-items-center justify-content-between bdrb1 pb-2" href="#">
                     <span class="text"><i class="flaticon-calendar text-thm2 pe-2 vam"></i>Last Delivery</span> <span class="">5 days</span>
-                  </a>
+                  </a> -->
                   <a class="d-flex align-items-center justify-content-between bdrb1 pb-2" href="#">
-                    <span class="text"><i class="flaticon-mars text-thm2 pe-2 vam"></i>Gender</span> <span class="">Male</span>
+                    <span class="text"><i class="flaticon-mars text-thm2 pe-2 vam"></i>Gender</span> <span class="">
+                      <?php echo $user['gender'] ; ?>
+                    </span>
                   </a>
-                  <a class="d-flex align-items-center justify-content-between bdrb1 pb-2" href="#">
+                  <!-- <a class="d-flex align-items-center justify-content-between bdrb1 pb-2" href="#">
                     <span class="text"><i class="flaticon-translator text-thm2 pe-2 vam"></i>Languages</span> <span class="">English</span>
                   </a>
                   <a class="d-flex align-items-center justify-content-between mb-3" href="#">
                     <span class="text"><i class="flaticon-sliders text-thm2 pe-2 vam"></i>English Level</span> <span class="">Fluent</span>
-                  </a>
+                  </a> -->
                 </div>
                 <div class="d-grid">
                   <a href="page-contact.html" class="ud-btn btn-thm">Contact Me<i class="fal fa-arrow-right-long"></i></a>
